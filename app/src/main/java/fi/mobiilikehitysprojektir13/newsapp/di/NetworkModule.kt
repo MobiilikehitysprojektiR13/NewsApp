@@ -21,6 +21,7 @@ private const val API_KEY = "pub_40074d1d7872307fc1b23af0339c4f83e5401"
 private val categories = emptySet<String>()
 private val countries = emptySet<String>()
 private val languages = emptySet<String>()
+private val query = ""
 
 val networkModule = module {
     single { provideKtorClient() }
@@ -41,6 +42,7 @@ private fun provideKtorClient(): HttpClient = HttpClient(Android) {
             protocol = URLProtocol.HTTPS
             contentType(ContentType.Application.Json)
             parameters.append("apikey", API_KEY)
+            if (query.trim() != "")) parametrs.append("q", query)
             if (categories.isNotEmpty()) parameters.append("category", categories.joinToString(","))
             if (countries.isNotEmpty()) parameters.append("country", countries.joinToString(","))
             if (languages.isNotEmpty()) parameters.append("language", languages.joinToString(","))
