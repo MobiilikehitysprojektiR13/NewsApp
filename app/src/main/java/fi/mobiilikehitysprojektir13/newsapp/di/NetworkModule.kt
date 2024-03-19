@@ -42,7 +42,7 @@ private fun provideKtorClient(): HttpClient = HttpClient(Android) {
             protocol = URLProtocol.HTTPS
             contentType(ContentType.Application.Json)
             parameters.append("apikey", API_KEY)
-            if (query.trim() != "")) parametrs.append("q", query)
+            if (query.trim() != "")) parameters.append("q", query)
             if (categories.isNotEmpty()) parameters.append("category", categories.joinToString(","))
             if (countries.isNotEmpty()) parameters.append("country", countries.joinToString(","))
             if (languages.isNotEmpty()) parameters.append("language", languages.joinToString(","))
